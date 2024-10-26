@@ -1,0 +1,50 @@
+﻿@page "/"
+
+@using AccordianComponent.Components.UI.Accordion;
+
+<PageTitle>Accordion</PageTitle>
+
+<h1>Accordion Control</h1>
+
+<AccordionUIControl.Components.UI.Accordion.AccordionControl Items="AccordionItems" />"
+
+@code {
+    private List<AccordionItem> AccordionItems = [];
+    private bool allowBudgetGoal = true; // Set your condition here
+
+    protected override void OnInitialized()
+    {
+        AccordionItems = new List<AccordionItem>
+        {
+            new AccordionItem
+            {
+                Label = "Counter",
+                Content = @<Counter />
+            },
+            new AccordionItem
+            {
+                Label = "Weather",
+                Content = @<Weather />
+            },
+            new AccordionItem
+            {
+                Label = "Override Viewer",
+                Content = @<OverrideView />
+            },
+            new AccordionItem
+            {
+                Label = "Audit Log Viewer",
+                Content = @<AuditTrialView />
+            }
+        };
+
+        if (allowBudgetGoal)
+        {
+            AccordionItems.Add(new AccordionItem
+            {
+                Label = "Set Budget Goal",
+                Content = @<BudgetGoalView />
+            });
+        }
+    }
+}
